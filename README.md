@@ -29,7 +29,7 @@ The repository is organised as a Python package (`idh`) so components can be reu
 This repo is a **template**, designed for anyone to fork and reproduce the full pipeline within their own Google Cloud project.
 
 ### 1️⃣ Fork the template
-Click **Use this template** above to create your own copy.
+Click **Use this template** above to create your own copy (keep the repo private).
 
 ### 2️⃣ Add your Google Cloud credentials
 1. Create a GCP service account with Vertex AI, BigQuery, and Storage permissions  
