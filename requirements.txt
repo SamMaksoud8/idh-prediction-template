@@ -1,0 +1,24 @@
+# Core dependencies
+pandas>=2.3,<2.4
+pyarrow>=16,<22
+google-cloud-aiplatform>=1.120,<2
+google-cloud-bigquery>=3.38,<4
+plotly>=5,<6
+python-dotenv>=1.0,<2
+gradio>=5.0,<6
+numpy>=1.26
+pytest>=8.4.2
+gcsfs>=2025.9.0
+db-dtypes>=1.4.3
+
+# Optional dependencies
+# Development tools
+pytest
+pytest-cov
+ruff
+mypy
+pre-commit
+pip-tools
+
+# Serving (optional runtime)
+uvicorn

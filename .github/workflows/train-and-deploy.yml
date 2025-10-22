@@ -1,0 +1,63 @@
+name: Train and Deploy Model
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Project ID"
+        required: true
+        type: string
+      bucket:
+        description: "Google Cloud Storage Bucket"
+        required: true
+        type: string
+      region:
+        description: "Region"
+        required: true
+        default: "us-central1"
+        type: string
+      model_name:
+        description: "Model Name"
+        required: true
+        default: "idh-xgboost-model"
+        type: string
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write   
+    env:
+      PROJECT_NAME: ${{ inputs.project_name }}
+      REGION: ${{ inputs.region }}
+      BUCKET: ${{ inputs.bucket }}
+      MODEL_NAME: ${{ inputs.model_name }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Run script
+        run: |
+          gcloud services enable aiplatform.googleapis.com --project=${{ inputs.project_name }}
+          bash scripts/train_and_deploy.sh
+
+      - name: Upload CSV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.model_name }}-results-csv   # name of the artifact
+          path: model_evaluation_results_${{ inputs.model_name }}.csv
+          retention-days: 1              # how long GitHub keeps the artifact
+          compression-level: 6            # 0-9 (optional)
