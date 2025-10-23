@@ -57,10 +57,7 @@ The workflow will automatically:
 
 ---
 
-## 💻 Local Demo – Gradio App
-
-🧭 Local Deployment
--------------------
+## 💻 Run the Gradio App Locally
 
 To run the app locally after deploying your model to Vertex AI:
 
