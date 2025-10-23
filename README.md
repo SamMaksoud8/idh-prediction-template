@@ -1,7 +1,7 @@
 # IDH Prediction Platform 🩸  
 **End-to-end MLOps prototype for predicting intradialytic hypotension (IDH) on Google Cloud**
 
-This repository showcases a full machine-learning pipeline for clinical risk prediction of IDH — from **data ingestion** and **feature engineering** in BigQuery to **model deployment** on Vertex AI and a **Gradio web UI** for interactive inference.
+This repository showcases a full machine-learning pipeline for clinical risk prediction of IDH — from **data ingestion** and **feature engineering** in BigQuery to **model deployment** on Vertex AI and a **Gradio web UI** for interactive inference — all in under one hour.
 
 > 🧠 **Tech stack:** Python · BigQuery · Vertex AI · Cloud Storage · GitHub Actions · Gradio · Docker  
 > ⚙️ **Focus:** reproducible MLOps, cloud orchestration, and interpretable healthcare AI  
