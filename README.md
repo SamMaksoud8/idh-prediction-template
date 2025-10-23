@@ -13,10 +13,10 @@ This repository showcases a full machine-learning pipeline for clinical risk pre
 
 This project demonstrates how to:
 
-- **Provision** data infrastructure on Google Cloud (BigQuery + Cloud Storage)  
-- **Engineer features** and **train models with (AUC = ~0.90)** directly within BigQuery  
+- **Provision** data infrastructure on **Google Cloud** (BigQuery + Cloud Storage)  
+- **Engineer features** and **train models (AUC = ~0.90)** directly within BigQuery  
 - **Deploy** the trained model to **Vertex AI Endpoints** for online inference  
-- **Interact** with predictions through a **Gradio web app** showing systolic BP trends and IDH risk  
+- **Interact** with predictions via a **Gradio web app** that visualises systolic BP trends and IDH risk  
 
 The repository is organised as a Python package (`idh`) so components can be reused across CLI tools and the web UI.
 
