@@ -41,8 +41,8 @@ Click **Use this template** above to create your own copy (keep the repo private
 
 ### 3️⃣ Run the GitHub Action
 From the **Actions** tab, run **Train and Deploy Model** and provide:
-- `project_name` – your GCP project ID  
-- `bucket` – your Cloud Storage bucket name  
+- `project_name` – your GCP project ID (must refer to an existing, globally unique GCP project ID)  
+- `bucket` – your Cloud Storage bucket name (must be globally unique across all of GCP)
 - `region` – (optional) default `us-central1`
 - `model_name` – (optional) default `idh-xgboost-model`
 
