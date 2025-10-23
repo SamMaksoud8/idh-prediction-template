@@ -7,10 +7,11 @@
 # ====================================================================================
 #  Development Workflow Targets
 # ====================================================================================
-GOOGLE_APPLICATION_CREDENTIALS = ".keys/idh-prediction.json"
 
-auth: ## Authenticate gcloud with service account credentials
-	gcloud auth activate-service-account --key-file=$(GOOGLE_APPLICATION_CREDENTIALS)
+auth:
+	@echo "🔑 Using $(GOOGLE_APPLICATION_CREDENTIALS)"
+	@test -f "$(GOOGLE_APPLICATION_CREDENTIALS)" || (echo "❌ Missing key file"; exit 1)
+	@gcloud auth activate-service-account --key-file="$(GOOGLE_APPLICATION_CREDENTIALS)"
 
 build: ## Build the Docker image for local development
 	docker build -t idh-csv-predictor:local .

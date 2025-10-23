@@ -29,7 +29,9 @@ The repository is organised as a Python package (`idh`) so components can be reu
 This repo is a **template**, designed for anyone to fork and reproduce the full pipeline within their own Google Cloud project.
 
 ### 1️⃣ Fork the template
-Click **Use this template** above to create your own copy (keep the repo private).
+Click **Use this template** above to create your own copy. 
+> ⚠️ Keep the repository private to ensure your credentials remain secure.
+
 
 ### 2️⃣ Add your Google Cloud credentials
 1. Create a GCP service account with Vertex AI, BigQuery, and Storage permissions  
@@ -57,21 +59,61 @@ The workflow will automatically:
 
 ## 💻 Local Demo – Gradio App
 
-Once deployed, authenticate locally:
+🧭 Local Deployment
+-------------------
+
+To run the app locally after deploying your model to Vertex AI:
+
+### 1️⃣ Clone and install
 
 ```bash
-gcloud auth activate-service-account --key-file=path/to/service_account.json
+git clone https://github.com/SamMaksoud8/idh-prediction.git
+cd idh-prediction
+pip install -e .
 ```
-Then launch the app:
+
+### 2️⃣ Configure environment variables
+
+Set your project-specific environment variables:
+
+```bash
+# Required
+export PROJECT_NAME="idh-prediction"              # your GCP project ID
+export BUCKET="idh-prototype-data"                # your Cloud Storage bucket (must be globally unique)
+
+# Optional
+export REGION="us-central1"                       # default region
+export MODEL_NAME="idh-xgboost-model"             # optional Vertex AI model name`
+```
+> 💡 These values should match the ones used during your GitHub Action deployment.
+
+### 3️⃣ Authenticate with Google Cloud
+
+Point your environment to the service account key file you used for deployment:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=".keys/idh-prediction.json"
+```
+
+If you haven't already authenticated for CLI use:
+
+```bash
+gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+```
+
+### 4️⃣ Launch the Gradio app
+
 ```bash
 python src/idh/app/csv_prediction.py
 ```
 
-Visit http://localhost:8080 to upload a dialysis CSV and view:
-* SBP time-series plot
-* IDH risk prediction (⚠️ High or ✅ Low)
+Visit <http://localhost:8080> to upload a dialysis CSV and view:
 
-Example test files are under sample_data/.
+-   Systolic blood pressure (SBP) time-series plot
+
+-   IDH risk prediction (⚠️ High / ✅ Low)
+
+Example test files are available under `sample_data/`.
 
 ![Screenshot of the Gradio IDH prediction app](docs/assets/idh_gradio_overview.png)
 
@@ -104,15 +146,6 @@ Key modules:
 * idh.gcp – BigQuery / Storage utilities
 * idh.app – Gradio UI for predictions
 
-## ⚙️ Local Setup
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-```
-
-Then update `config.yaml` with your own values.
 
 ## ⚠️ Disclaimer
 
