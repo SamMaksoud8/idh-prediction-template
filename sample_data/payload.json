@@ -1,0 +1,27 @@
+{
+  "instances": [
+    {
+      "DM": "value",
+      "age_at_session": 0,
+      "avg_blood_flow": 0.0,
+      "avg_conductivity": 0.0,
+      "avg_dbp": 0,
+      "avg_dia_temp": 0.0,
+      "avg_sbp": 0,
+      "avg_uf_rate": 0.0,
+      "dialysis_vintage_years": 0.0,
+      "fluid_to_remove": 0.0,
+      "gender": "value",
+      "lag_1_avg_sbp": 0,
+      "lag_1_avg_uf_rate": 0.0,
+      "min_sbp": 0,
+      "minutes_into_session": 0,
+      "rolling_avg_sbp": 0,
+      "rolling_max_sbp": 0,
+      "rolling_stddev_sbp": 0.0,
+      "stddev_sbp": 0.0,
+      "trend_1_conductivity": 0.0,
+      "trend_1_sbp": 0.0
+    }
+  ]
+}
